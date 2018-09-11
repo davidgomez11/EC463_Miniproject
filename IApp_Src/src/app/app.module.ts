@@ -19,12 +19,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { ComponentsModule } from '../components/components.module';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBfkduNGbxxGCGJzAuMOUzaP7TvagES6oo",
-  authDomain: "my-project-1510625887038.firebaseapp.com",
-  databaseURL: "https://my-project-1510625887038.firebaseio.com",
-  projectId: "my-project-1510625887038",
-  storageBucket: "my-project-1510625887038.appspot.com",
-  messagingSenderId: "725420850271"
+  'x'
 }
 
 @NgModule({
