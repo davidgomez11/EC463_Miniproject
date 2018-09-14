@@ -9,7 +9,8 @@
 	</button>
 
 	
-	<div *ngIf="user.uid">
+	<div *ngIf="pushHome(user.uid)">
+		<!--
 		You're already logged in with UID: {{ user.uid }}
 		
 		<button ion-button (tap)="signOut()">
@@ -18,6 +19,7 @@
         <button ion-button (tap)="pushHome()">
         	Go to Home
         </button>
+        -->
 	</div>
 	
 
