@@ -24,10 +24,14 @@ export class HomePage {
 
 
   @ViewChild('lineCanvas') lineCanvas;
+  @ViewChild('lineCanvas2') lineCanvas2;
   private lineChart: any;
+  private lineChart2: any;
   items;
   xArray: any[] = [];
-  yArray: any[] = [];
+  tempArray: any[] = [];
+  humidArray: any[] = [];
+
 
   constructor(public navCtrl: NavController,
           private app:App,
@@ -41,31 +45,34 @@ export class HomePage {
   	this.uid = this.afAuth.auth.currentUser.uid;
 
   	// Adding dummy values for new user creation
-    firebase.database().ref('chart/' + this.uid).set({"0" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
-				"1" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
-				"2" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
-				"3" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
-				"4" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
-				"5" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
-				"6" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
-				"7" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
-				"8" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
-				"9" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
-				"10" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70)
+    firebase.database().ref('chart/' + this.uid).set({"0" : [(Math.floor(Math.random() * (85 - 70 + 1)) + 70), (Math.floor(Math.random() * (50 - 40 + 1)) + 40)],
+				"1" : [(Math.floor(Math.random() * (85 - 70 + 1)) + 70), (Math.floor(Math.random() * (50 - 40 + 1)) + 40)],
+				"2" : [(Math.floor(Math.random() * (85 - 70 + 1)) + 70), (Math.floor(Math.random() * (50 - 40 + 1)) + 40)],
+				"3" : [(Math.floor(Math.random() * (85 - 70 + 1)) + 70), (Math.floor(Math.random() * (50 - 40 + 1)) + 40)],
+				"4" : [(Math.floor(Math.random() * (85 - 70 + 1)) + 70), (Math.floor(Math.random() * (50 - 40 + 1)) + 40)],
+				"5" : [(Math.floor(Math.random() * (85 - 70 + 1)) + 70), (Math.floor(Math.random() * (50 - 40 + 1)) + 40)],
+				"6" : [(Math.floor(Math.random() * (85 - 70 + 1)) + 70), (Math.floor(Math.random() * (50 - 40 + 1)) + 40)],
+				"7" : [(Math.floor(Math.random() * (85 - 70 + 1)) + 70), (Math.floor(Math.random() * (50 - 40 + 1)) + 40)],
+				"8" : [(Math.floor(Math.random() * (85 - 70 + 1)) + 70), (Math.floor(Math.random() * (50 - 40 + 1)) + 40)],
+				"9" : [(Math.floor(Math.random() * (85 - 70 + 1)) + 70), (Math.floor(Math.random() * (50 - 40 + 1)) + 40)],
+				"10" : [(Math.floor(Math.random() * (85 - 70 + 1)) + 70), (Math.floor(Math.random() * (50 - 40 + 1)) + 40)]
 			});
 
   	// Look for data node inside of chart node
   	this.items = firebase.database().ref('chart/' + this.uid).orderByKey();
   	this.items.on('value', (snapshot) => {
   		this.xArray.splice(0, this.xArray.length);
-  		this.yArray.splice(0, this.yArray.length);
+  		this.tempArray.splice(0, this.tempArray.length);
+      this.humidArray.splice(0, this.humidArray.length);
   		snapshot.forEach((childSnapshot) => {
   			this.xArray.push(childSnapshot.key);
-  			this.yArray.push(childSnapshot.val());
+  			this.tempArray.push(childSnapshot.val()[0]);
+        this.humidArray.push(childSnapshot.val()[1]);
   		});
       console.log("This is xArray : " + this.xArray);
-      console.log("This is yArray : " + this.yArray);
-  		this.basicChart(this.xArray, this.yArray);
+      console.log("This is yArray : " + this.tempArray);
+  		this.basicChart(this.xArray, this.tempArray);
+      this.basicChart2(this.xArray, this.humidArray);
   	});
 
   }
@@ -109,6 +116,47 @@ export class HomePage {
   			}
   		}
   	});
+  }
+
+  basicChart2(key, value){
+    this.lineChart2 = new Chart(this.lineCanvas2.nativeElement, {
+      type: 'line',
+      data: {
+        labels: key,
+        datasets: [{
+          label: "Humidity",
+          fill: true,
+          lineTension: 0.1,
+          backgroundColor: "rgba(0,204,102,0.4)",
+          borderColor: "rgba(0,204,102,1)",
+          borderCapStyle: "butt",
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: "rgba(0,204,102,1)",
+          pointBackgroundColor: "#fff",
+          pointBorderWidth: 8,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: "rgba(0,204,102,1)",
+          pointHoverBorderColor: "rgba(0,204,102,1)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 3,
+          pointHitRadius: 10,
+          data: value,
+          spanGaps: "false",
+        }]
+      },
+      options: {
+        scales: {
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Time'
+            }
+          }],
+        }
+      }
+    });
   }
 
   /*ionViewDidLoad() {

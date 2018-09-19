@@ -29,7 +29,7 @@ export class AboutPage {
   		//this.xArray.splice(0, this.xArray.length);
   		//this.yArray.splice(0, this.yArray.length);
   		this.items.splice(0, this.items.length);
-  		this.items.push(["Time : ","Temperature"]);
+  		this.items.push(["Time : ","Temperature, Humidity"]);
   		snapshot.forEach((childSnapshot) => {
   			this.items.push([(childSnapshot.key + " : "), childSnapshot.val()]);
   			//this.xArray.push(childSnapshot.key);
