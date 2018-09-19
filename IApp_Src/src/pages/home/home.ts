@@ -9,6 +9,7 @@ import { ToastController } from 'ionic-angular/components/toast/toast-controller
 import { Chart } from 'chart.js';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { LoginPage } from '../../pages/login/login';
+import { App } from 'ionic-angular';
 import * as firebase from 'firebase';
 
 @Component({
@@ -29,6 +30,7 @@ export class HomePage {
   yArray: any[] = [];
 
   constructor(public navCtrl: NavController,
+          private app:App,
   			  private afAuth: AngularFireAuth,
   			  private platform: Platform,
   			  private gplus: GooglePlus,
@@ -39,17 +41,17 @@ export class HomePage {
   	this.uid = this.afAuth.auth.currentUser.uid;
 
   	// Adding dummy values for new user creation
-    firebase.database().ref('chart/' + this.uid).set({"0" : (Math.floor(Math.random() * (90 - 60 + 1)) + 60),
-				"1" : (Math.floor(Math.random() * (90 - 60 + 1)) + 60),
-				"2" : (Math.floor(Math.random() * (90 - 60 + 1)) + 60),
-				"3" : (Math.floor(Math.random() * (90 - 60 + 1)) + 60),
-				"4" : (Math.floor(Math.random() * (90 - 60 + 1)) + 60),
-				"5" : (Math.floor(Math.random() * (90 - 60 + 1)) + 60),
-				"6" : (Math.floor(Math.random() * (90 - 60 + 1)) + 60),
-				"7" : (Math.floor(Math.random() * (90 - 60 + 1)) + 60),
-				"8" : (Math.floor(Math.random() * (90 - 60 + 1)) + 60),
-				"9" : (Math.floor(Math.random() * (90 - 60 + 1)) + 60),
-				"10" : (Math.floor(Math.random() * (90 - 60 + 1)) + 60)
+    firebase.database().ref('chart/' + this.uid).set({"0" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
+				"1" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
+				"2" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
+				"3" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
+				"4" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
+				"5" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
+				"6" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
+				"7" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
+				"8" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
+				"9" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70),
+				"10" : (Math.floor(Math.random() * (85 - 70 + 1)) + 70)
 			});
 
   	// Look for data node inside of chart node
@@ -61,6 +63,8 @@ export class HomePage {
   			this.xArray.push(childSnapshot.key);
   			this.yArray.push(childSnapshot.val());
   		});
+      console.log("This is xArray : " + this.xArray);
+      console.log("This is yArray : " + this.yArray);
   		this.basicChart(this.xArray, this.yArray);
   	});
 
@@ -72,7 +76,7 @@ export class HomePage {
   		data: {
   			labels: key,
   			datasets: [{
-  				label: "Average Savings",
+  				label: "Temperature",
   				fill: true,
   				lineTension: 0.1,
   				backgroundColor: "rgba(72,138,255,0.4)",
@@ -99,7 +103,7 @@ export class HomePage {
   				xAxes: [{
   					scaleLabel: {
   						display: true,
-  						labelString: 'Ages'
+  						labelString: 'Time'
   					}
   				}],
   			}
@@ -116,7 +120,7 @@ export class HomePage {
   	if (this.platform.is('cordova')) {
   		this.gplus.logout();
   	}
-  	this.navCtrl.setRoot(LoginPage);
+  	this.app.getRootNav().setRoot(LoginPage);
   }
 
 }

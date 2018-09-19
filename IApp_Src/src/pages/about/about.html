@@ -1,11 +1,24 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Values
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+	<ion-list>
+ 		<ion-item *ngFor="let item of items">
+    		{{ item[0] }} {{ item[1] }}
+  		</ion-item>
+	</ion-list>
+	<!--
+	<ion-list>
+		<ion-item *ngFor="let item of valueListRef$ | async">
+			<h2>Time: {{item.key}}</h2>
+			<h3>Temperature: {{item.val}}</h3>
+		</ion-item>
+	</ion-list>
+	-->
 
 </ion-content>
