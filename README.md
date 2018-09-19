@@ -37,4 +37,4 @@ the platforms and plugins that you had previously installed now in oyour project
 ## **Database Design** 
 The `Firebase` database schema is as follows below. Each user has a { key : uid , values , temperature : values }.
 
-![image](https://user-images.githubusercontent.com/30166356/45777356-92f1d680-bc23-11e8-81e9-7ec7fd7f82a7.png)
+![image](https://user-images.githubusercontent.com/30166356/45782384-c1c27980-bc30-11e8-93c0-b22c6495f951.png)
