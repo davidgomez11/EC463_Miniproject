@@ -11,7 +11,7 @@ database is updated through the `sensorValueCreator.py` script which uses the `F
 communicate with the database. The app itself also communticates with the database in order to pull certain data values in
 order to display these values inside of the pages of the app, through a line graph and chart.
 
-## **Sprint Description**
+## **Sprints Description**
 September 6 - September 10
 
 1. Laid down base plan with tasks on what to implement and when to complete it
