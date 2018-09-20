@@ -14,21 +14,21 @@ order to display these values inside of the pages of the app, through a line gra
 ## **Sprint Description**
 September 6 - September 10
 
--Laid down base plan with tasks on what to implement and when to complete it
--Researched API's, frameworks to use for project
--Decided on using Ionic, pairing it with Google Login, and a Firebase database
+1. Laid down base plan with tasks on what to implement and when to complete it
+2. Researched API's, frameworks to use for project
+3. Decided on using Ionic, pairing it with Google Login, and a Firebase database
 
 September 11 - 15
 
--Began to implement base app with just a home page with two other pages in a tab format
--Next implemented Google Login, script to update the Firebase data, and the chart mechanics in order to display 
+1. Began to implement base app with just a home page with two other pages in a tab format
+2. Next implemented Google Login, script to update the Firebase data, and the chart mechanics in order to display 
 the temperature data
 
 September 16 - 20
 
--Added implementation for displaying both temperature and sensor data, visually and literally (graph , and table)
--Cleaned up some of the UI
--Worked on final documenatation
+1. Added implementation for displaying both temperature and sensor data, visually and literally (graph , and table)
+2. Cleaned up some of the UI
+3. Worked on final documenatation
 
 ## **Installation Steps**
 1. Make sure you have `Ionic` installed on your machine, installation steps for that are found here :
