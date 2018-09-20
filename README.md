@@ -11,6 +11,22 @@ database is updated through the `sensorValueCreator.py` script which uses the `F
 communicate with the database. The app itself also communticates with the database in order to pull certain data values in
 order to display these values inside of the pages of the app, through a line graph and chart.
 
+## **Sprint Description**
+September 6 - September 10
+-Laid down base plan with tasks on what to implement and when to complete it
+-Researched API's, frameworks to use for project
+-Decided on using Ionic, pairing it with Google Login, and a Firebase database
+
+September 11 - 15
+-Began to implement base app with just a home page with two other pages in a tab format
+-Next implemented Google Login, script to update the Firebase data, and the chart mechanics in order to display 
+the temperature data
+
+September 16 - 20
+-Added implementation for displaying both temperature and sensor data, visually and literally (graph , and table)
+-Cleaned up some of the UI
+-Worked on final documenatation
+
 ## **Installation Steps**
 1. Make sure you have `Ionic` installed on your machine, installation steps for that are found here :
 https://ionicframework.com/docs/intro/installation/ .
